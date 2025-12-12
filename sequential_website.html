@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sequential Website</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f87dd9; }
+    h1, h2, h3 { text-align: center; color: #86006f; }
+    h1 { font-size: 42px; }
+    h2 { font-size: 32px; }
+    h3 { font-size: 24px; }
+    .page { display: none; }
+    .active { display: block; }
+    .image-item { margin-bottom: 15px; }
+    img { max-width: 200px; display: block; margin: 0 auto 5px auto; }
+  </style>
+</head>
+<body>
+
+  <!-- Page 1 -->
+  <div id="page1" class="page active">
+    <h2>Do you want to continue?</h2>
+    <button onclick="goToPage(2)">Yes</button>
+    <button onclick="goToPage(2)">No</button>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2" class="page">
+    <h2>Click submit to continue</h2>
+    <button onclick="goToPage(3)">Submit</button>
+  </div>
+
+  <!-- Page 3 -->
+  <div id="page3" class="page">
+    <h2>Select your images</h2>
+
+    <div class="image-item">
+      <img src="https://via.placeholder.com/200" alt="Image 1">
+      <label><input type="checkbox" value="Image 1"> Image 1</label>
+    </div>
+
+    <div class="image-item">
+      <img src="https://via.placeholder.com/200" alt="Image 2">
+      <label><input type="checkbox" value="Image 2"> Image 2</label>
+    </div>
+
+    <div class="image-item">
+      <img src="https://via.placeholder.com/200" alt="Image 3">
+      <label><input type="checkbox" value="Image 3"> Image 3</label>
+    </div>
+
+    <button onclick="submitImages()">Submit</button>
+  </div>
+
+  <!-- Page 4 -->
+  <div id="page4" class="page">
+    <h1>Thank you!</h1>
+    <h3>You selected:</h3>
+    <ul id="selected-list"></ul>
+  </div>
+
+  <script>
+    function goToPage(num) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + num).classList.add('active');
+    }
+
+    function submitImages() {
+      const checked = [...document.querySelectorAll('#page3 input[type="checkbox"]:checked')];
+      const ul = document.getElementById('selected-list');
+      ul.innerHTML = '';
+
+      checked.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c.value;
+        ul.appendChild(li);
+      });
+
+      goToPage(4);
+    }
+  </script>
+</body>
+</html>
