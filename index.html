@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sequential Website</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: url('chrismas_bg.jpg'); }
-    h1, h2, h3 { text-align: center; color: #ff1639; }
+    body { font-family: Arial, sans-serif; padding: 20px; background: url('bg.jpg') no-repeat center center fixed; background-size: cover; }
+    h1, h2, h3 { text-align: center; color: #2b3a67; }
     h1 { font-size: 42px; }
     h2 { font-size: 32px; }
     h3 { font-size: 24px; }
@@ -14,13 +14,22 @@
     .active { display: block; }
     .image-item { margin-bottom: 15px; }
     img { max-width: 200px; display: block; margin: 0 auto 5px auto; }
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      h1 { font-size: 32px; }
+      h2 { font-size: 26px; }
+      h3 { font-size: 20px; }
+      img { max-width: 100%; }
+      button { width: 100%; padding: 12px; font-size: 18px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- Page 1 -->
   <div id="page1" class="page active">
-    <h2>Do you want to continue?</h2>
+    <img src="shy.gif" alt="fun gif" style="display:block;margin:0 auto 20px auto;max-width:250px;">
+    <h2>Cậu sẽ đi chơi Noel với tớ chứ?</h2>
     <button onclick="goToPage(2)">Yes</button>
     <button onclick="goToPage(2)">No</button>
   </div>
