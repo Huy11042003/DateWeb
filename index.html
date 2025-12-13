@@ -12,8 +12,37 @@
     h3 { font-size: 24px; }
     .page { display: none; }
     .active { display: block; }
-    .image-item { margin-bottom: 15px; }
-    img { max-width: 200px; display: block; margin: 0 auto 5px auto; }
+    .image-item { 
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    img {
+      max-width: 200px;
+      display: block;
+      margin: 0 auto 5px auto;
+    }
+
+
+    .circle-image {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, #ff7eb3, #65d6ce, #7f7cff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+    }
+
+
+    .circle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      background: white;
+    }
     @media (max-width: 600px) {
       body { padding: 10px; }
       h1 { font-size: 32px; padding: 60px;}
@@ -40,6 +69,16 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       }
     }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .button-row button {
+      margin: 10px 0;
+      min-width: 120px;
+    }
   </style>
 </head>
 <body>
@@ -48,8 +87,10 @@
   <div id="page1" class="page active">
     <h1></h1>
     <h2>M sẽ đi chơi Noel với t chứ?</h2>
-    <button onclick="goToPage(2)">Có</button>
-    <button onclick="goToPage(2)">Kó</button>
+    <div class="button-row">
+      <button onclick="goToPage(2)">Có</button>
+      <button onclick="goToPage(2)">Kó</button>
+    </div>
     <img src="shy.gif" alt="fun gif" style="display:block;margin:0 auto 20px auto;max-width:250px;">
   </div>
 
@@ -66,18 +107,10 @@
     <h2>Select your images</h2>
 
     <div class="image-item">
-      <img src="https://via.placeholder.com/200" alt="Image 1">
-      <label><input type="checkbox" value="Image 1"> Image 1</label>
-    </div>
-
-    <div class="image-item">
-      <img src="https://via.placeholder.com/200" alt="Image 2">
-      <label><input type="checkbox" value="Image 2"> Image 2</label>
-    </div>
-
-    <div class="image-item">
-      <img src="https://via.placeholder.com/200" alt="Image 3">
-      <label><input type="checkbox" value="Image 3"> Image 3</label>
+      <div class="circle-image">
+        <img src="allinbao.jpg" alt="Image 1">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 1"> Image 1</label>
     </div>
 
     <button onclick="submitImages()">Submit</button>
