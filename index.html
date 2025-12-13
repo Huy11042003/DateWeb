@@ -10,8 +10,33 @@
     h1 { font-size: 42px; }
     h2 { font-size: 32px; }
     h3 { font-size: 24px; }
-    .page { display: none; }
+    .page {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .page.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .page.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
     .active { display: block; }
+    .image-item {
+      margin-bottom: 20px;
+      text-align: center;
+    }
     .image-item { 
       margin-bottom: 20px;
       text-align: center;
@@ -97,22 +122,42 @@
   <!-- Page 2 -->
   <div id="page2" class="page">
     <h1></h1>
-    <h2>Chọn ngày đi nè ^^</h2>
+    <h2>Chọn ngày đi nè &#128525;</h2>
     <input id="selectedDate" type="date" value="2025-12-25" style="display:block;margin:20px auto;padding:10px;font-size:18px;">
     <button onclick="saveDate()">Submit</button>
   </div>
 
   <!-- Page 3 -->
   <div id="page3" class="page">
-    <h2>Select your images</h2>
+    <h2>Chọn chỗ đi, bao nhiêu cũng dc nha &#128535;</h2>
 
     <div class="image-item">
       <div class="circle-image">
         <img src="allinbao.jpg" alt="Image 1">
       </div>
-        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 1"> Image 1</label>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 1"> All in Bao</label>
     </div>
 
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="haidilao.jpg" alt="Image 2">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 2"> Haidilao</label>
+    </div>
+
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="longwang.jpg" alt="Image 3">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 3"> Long Wang</label>
+    </div>
+
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="chean.jpg" alt="Image 4">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 4"> Chè An</label>
+    </div>
     <button onclick="submitImages()">Submit</button>
   </div>
 
@@ -131,8 +176,12 @@
     let chosenDate = '';
 
     function goToPage(num) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById('page' + num).classList.add('active');
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(p => p.classList.remove('active'));
+
+      requestAnimationFrame(() => {
+        document.getElementById('page' + num).classList.add('active');
+      });
     }
     function saveDate() {
       const d = document.getElementById('selectedDate').value;
