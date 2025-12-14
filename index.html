@@ -176,8 +176,11 @@
       const pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
 
+
       requestAnimationFrame(() => {
-        document.getElementById('page' + num).classList.add('active');
+      const nextPage = document.getElementById('page' + num);
+      nextPage.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
     function saveDate() {
