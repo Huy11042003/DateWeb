@@ -3,9 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="letter_style.css">
   <title>Sequential Website</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: url('bg.jpg') no-repeat center center fixed; background-size: cover; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+      background: url('bg.jpg') no-repeat center center fixed; 
+      background-size: cover; 
+      align-items: center;
+      justify-content: center;}
     h1, h2, h3 { text-align: center; color: #2b3a67; }
     h1 { font-size: 42px; }
     h2 { font-size: 32px; }
@@ -18,7 +27,7 @@
       opacity: 0;
       pointer-events: none;
       transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transition: opacity 0.5s ease, transform 1s ease;
     }
 
     .page.active {
@@ -65,7 +74,6 @@
       background: white;
     }
     @media (max-width: 600px) {
-      body { padding: 10px; }
       h1 { font-size: 32px; padding: 100px;}
       h2 { font-size: 26px; }
       h3 { font-size: 20px; }
@@ -106,9 +114,23 @@
   <audio id="bg-music" loop>
     <source src="music.mp3" type="audio/mpeg">
   </audio>
-  
+
+  <div id="page0" class="page active"></div>
+    <div class="container">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <!-- <div class="letter">
+                    <div class="text">
+                        <str
+                    </div>
+                </div> -->
+            </div>
+            <div class="heart"></div>
+        </div>
+    </div>
+  </div>
   <!-- Page 1 -->
-  <div id="page1" class="page active">
+  <div id="page1" class="page">
     <h1></h1>
     <h2>Noel này m có rảnh để đi chơi với t khom? &#128535;</h2>
     <div class="button-row">
@@ -122,7 +144,7 @@
   <div id="page2" class="page">
     <h1></h1>
     <h2>Chọn ngày đi nè &#128525;</h2>
-    <input id="selectedDate" type="date" value="2025-12-24" style="display:block;margin:20px auto;padding:10px;font-size:18px;">
+    <input id="selectedDate" type="date" value="2025-12-25" style="display:block;margin:20px auto;padding:10px;font-size:18px;">
     <button onclick="saveDate()">Submit</button>
   </div>
 
@@ -182,6 +204,13 @@
   <script>
     let chosenDate = '';
 
+    const envelope = document.querySelector(".envelope-wrapper");
+        const heart = document.querySelector(".heart");
+        heart.addEventListener("click", ()=>{
+            envelope.classList.toggle("flap")
+            goToPage(1);
+        })
+
     function goToPage(num) {
       const pages = document.querySelectorAll('.page');
       pages.forEach(p => p.classList.remove('active'));
@@ -191,6 +220,11 @@
       const nextPage = document.getElementById('page' + num);
       nextPage.classList.add('active');
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      const music = document.getElementById('bg-music');
+        if (music.paused) {
+          music.volume = 0.3;
+          music.play().catch(() => {});
+        }
       });
     }
     function saveDate() {
