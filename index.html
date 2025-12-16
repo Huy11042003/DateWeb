@@ -7,7 +7,7 @@
   <title>Sequential Website</title>
   <style>
     body { 
-      font-family: Arial, sans-serif; 
+      font-family: "PlaywriteVN";
       margin: 0; 
       padding: 0; 
       box-sizing: border-box;
@@ -77,9 +77,25 @@
       h1 { font-size: 32px; padding: 100px;}
       h2 { font-size: 26px; }
       h3 { font-size: 20px; }
+
+      #page3 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      }
+
+      #page3 h2,
+      #page3 button {
+      grid-column: span 2;
+      }
+
+      .image-item {
+      margin-bottom: 0;
+      }
       img { max-width: 100%; }
       button {
         padding: 12px 20px;
+        font-family: "PlaywriteVN";
         font-size: 18px;
         border: 2px solid #2b3a67;
         border-radius: 12px;
@@ -108,6 +124,19 @@
       margin: 10px 0;
       min-width: 120px;
     }
+    .center-list {
+
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+
+    .center-list li {
+      margin: 8px 0;
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
@@ -119,7 +148,7 @@
     <div class="container">
         <div class="envelope-wrapper">
             <div class="envelope"></div>
-            <span class="corner-text">To: My Khang</span>
+            <span class="corner-text">To: Mỹ Khang</span>
             <div class="heart"></div>
         </div>
     </div>
@@ -147,31 +176,69 @@
   <!-- Page 3 -->
   <div id="page3" class="page">
     <h1></h1>
-    <h2>Chọn chỗ đi ăn nha &#128541;</h2>
+    <h2>Chọn chỗ đi ăn nha, nhiu cũng dc &#128541;</h2>
 
     <div class="image-item">
       <div class="circle-image">
-        <img src="haidilao.jpg" alt="Image 2">
+        <img src="haidilao.jpg" alt="Image 1">
       </div>
-        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 2"> Haidilao</label>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Lẩu"> Lẩu</label>
     </div>
 
     <div class="image-item">
       <div class="circle-image">
-        <img src="longwang.jpg" alt="Image 3">
+        <img src="longwang.jpg" alt="Image 2">
       </div>
-        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Image 3"> Hấp Thủy Nhiệt</label>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Hấp"> Hấp</label>
     </div>
 
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="bbq.jpg" alt="Image 3">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Nướng"> Nướng</label>
+    </div>
+
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="hanquoc.jpg" alt="Image 4">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Hàn"> Hàn</label>
+    </div>
+
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="steak.jpg" alt="Image 5">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Steak"> Steak</label>
+    </div>
+
+    <div class="image-item">
+      <div class="circle-image">
+        <img src="sushi.jpg" alt="Image 6">
+      </div>
+        <label style="display:block;margin-top:8px;"><input type="checkbox" value="Sushi"> Sushi</label>
+    </div>
+
+    <img src="eating.gif" alt="fun gif" style="display:block;margin:0 auto 20px auto;max-width:250px;">
+    <img src="eating.gif" alt="fun gif" style="display:block;margin:0 auto 20px auto;max-width:250px;">
     <button onclick="submitImages()">Xong ròi</button>
   </div>
 
   <!-- Page 4 -->
   <div id="page4" class="page">
     <h1></h1>
+    <h2>Ăn xong dạo phố hay đi uống nước ha &#128073; &#128072;</h2>
+    <img src="walk.gif" alt="fun gif" style="display:block;margin:0 auto 20px auto;max-width:250px;">
+    <button onclick="goToPage(5)">Oke luôn</button>
+  </div>
+
+  <!-- Page 5 -->
+  <div id="page5" class="page">
+    <h1></h1>
     <h2>Cảm ơn nè &#128150</h2>
-    <h3>Bạn đã chọn đi:</h3>
-    <ul id="selected-list"></ul>
+    <h3>Bạn đã chọn đi ăn món:</h3>
+    <ul id="selected-list" class="center-list"></ul>
     <h3>Ngày đi chơi:</h3>
     <p id="final-date" style="text-align:center;font-size:20px;"></p>
     <h2>Chụp màn hình lại nha hihi &#128248;</h2>
