@@ -114,37 +114,32 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       }
     }
-    /* Large phones ~6.9 inches (≈ 412–480px width) */
-    @media (min-width: 412px) and (max-width: 480px) {
-      h1 { font-size: 36px; }
-      h2 { font-size: 28px; }
-      h3 { font-size: 22px; }
+    @media (min-width: 390px) and (max-width: 430px) {
+      body {
+        padding: 12px;
+      }
+
+      h1 { font-size: 34px; }
+      h2 { font-size: 26px; }
+      h3 { font-size: 20px; }
 
       .circle-image {
-        width: 200px;
-        height: 200px;
+        width: 170px;
+        height: 170px;
       }
 
       #page3 {
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 14px;
       }
 
-      #page3 h2,
-      #page3 button {
-        grid-column: span 2;
+      .image-item p {
+        font-size: 15px;
       }
-
-      .image-item {
-        margin-bottom: 0;
-      }
-
-      img { max-width: 100%; }
 
       button {
-        width: 100%;
+        font-size: 17px;
         padding: 12px;
-        font-size: 18px;
       }
     }
 
